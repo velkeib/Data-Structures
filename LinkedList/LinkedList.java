@@ -28,17 +28,63 @@ public class LinkedList{
 		}
 	}
 	
+	public void add(int index, int data){
+		
+		Node newNode = new Node(data);
+		
+		if(index == 0){
+			newNode.setNext(this.head);
+			this.head = newNode;
+		}else if(index == 1){
+			newNode.setNext(this.head.getNext());
+			this.head.setNext(newNode);
+		}else{
+			Node node = this.head;
+			
+			int i = 0;
+			
+			while(i < index - 1){
+				node = node.getNext();
+				
+				newNode.setNext(node.getNext());
+				node.setNext(newNode);
+				i++;
+			}
+		}
+	}
+	
+	public int get(int index){
+		
+		int i = 0;
+		
+		Node node = this.head;
+		
+		if(index == 0){
+			return this.head.getData();
+		}
+		else{
+			while(i < index){
+				node = node.getNext();
+				i++;
+			}
+		}
+		
+		return node.getData();
+	}
+	
 	public void printList(){
 		
 		if(this.isEmpty()){
 			System.out.println("Empty list");
 		}else{
 			
-			Node next = this.head;
+			Node node = this.head;
 			
-			while(next.getNext() != null){
-				next = next.getNext();
-				System.out.println("" + next.getData());
+			System.out.println("" + node.getData());
+			
+			while(node.getNext() != null){
+				node = node.getNext();
+				System.out.println("" + node.getData());
 			}
 			
 			

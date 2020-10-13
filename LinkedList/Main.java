@@ -12,5 +12,13 @@ public class Main{
 		
 		list.printList();
 		
+		System.out.println(list.get(3));
+		
+		list.add(2, 30);
+		list.add(1, 40);
+		list.add(0, 50);
+		
+		list.printList();
+		
 	}
 }
